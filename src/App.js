@@ -1,24 +1,39 @@
 import logo from './logo.svg';
+import {Routes, Route, useNavigte} from 'react-router-dom';
 import './App.css';
-
+import { useEffect } from 'react';
+import Layout from './components/Videos';
+import Login from './components/Login';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Menu from './components/Menu';
+import Videos from './components/Videos';
+import ChannelVideos from './components/ChannelVideos';
+import VideoDetails from './components/VideoDetails';
+import SearchFeed from './components/SearchFeed';
 function App() {
+  useEffect(() => {
+    document.title = "Youtube"; 
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='flex flex-col justify-start  bg-[#464343]'>
+      <div className='w-full h-[2rem]'>
+        <Header />
+      </div>
+      <div className='flex  h-[90vh] mt-[1rem]'>
+        <Sidebar />
+        <div className='flex flex-col justify-start min-w-[100%]'>
+            <Menu />
+            <Routes>
+              <Route path='/' element={<Videos />} />
+              <Route path='login' element={<Login />} />
+              <Route path='/channel/:id' element={<ChannelVideos />} />
+              <Route path='/video/:id' element={<VideoDetails />} />
+              <Route path='/search/:searchTerm' element={<SearchFeed />} />
+            </Routes>
+        </div>
+      </div>
+    </div> 
   );
 }
 
