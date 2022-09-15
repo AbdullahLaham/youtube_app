@@ -16,13 +16,13 @@ function App() {
     document.title = "Youtube"; 
   }, []);
   return (
-    <div className='flex flex-col justify-start  bg-[#464343]'>
+    <div className='flex flex-col justify-start max-w-[100%] bg-[#464343]'>
       <div className='w-full h-[2rem]'>
         <Header />
       </div>
       <div className='flex  h-[90vh] mt-[1rem]'>
         <Sidebar />
-        <div className='flex flex-col justify-start min-w-[100%]'>
+        <div className='flex flex-col justify-start '>
             <Menu />
             <Routes>
               <Route path='/' element={<Videos />} />
